@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               Text(
-                'Welcome to Widget App',
+                'Welcome to Widget App123',
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
