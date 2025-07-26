@@ -23,7 +23,9 @@ class AppThemeConfig {
         textStyle: TextStyle(
           fontFamily: fontFamily,
           fontSize: fontSize,
-          color: brightness == Brightness.dark ? CupertinoColors.white : CupertinoColors.black,
+          color: brightness == Brightness.dark
+              ? CupertinoColors.white
+              : CupertinoColors.black,
         ),
       ),
       scaffoldBackgroundColor: brightness == Brightness.dark
@@ -43,7 +45,9 @@ class AppThemeConfig {
 
   static AppThemeConfig fromMap(Map<String, dynamic> map) {
     return AppThemeConfig(
-      brightness: map['brightness'] == 'dark' ? Brightness.dark : Brightness.light,
+      brightness: map['brightness'] == 'dark'
+          ? Brightness.dark
+          : Brightness.light,
       colorPreset: colorPresetFromString(map['colorPreset'] ?? 'defaultPreset'),
       fontFamily: map['fontFamily'] ?? 'Roboto',
       fontSize: (map['fontSize'] is int)
@@ -55,6 +59,9 @@ class AppThemeConfig {
   static String colorPresetToString(AppColorPreset preset) {
     if (preset == PresetColors.cyan) return 'cyan';
     if (preset == PresetColors.purple) return 'purple';
+    if (preset == PresetColors.blue) return 'blue';
+    if (preset == PresetColors.orange) return 'orange';
+    if (preset == PresetColors.red) return 'red';
     return 'defaultPreset';
   }
 
@@ -64,6 +71,12 @@ class AppThemeConfig {
         return PresetColors.cyan;
       case 'purple':
         return PresetColors.purple;
+      case 'blue':
+        return PresetColors.blue;
+      case 'orange':
+        return PresetColors.orange;
+      case 'red':
+        return PresetColors.red;
       default:
         return PresetColors.defaultPreset;
     }

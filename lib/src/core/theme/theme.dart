@@ -4,6 +4,12 @@ import 'dart:convert';
 import 'app_theme_config.dart';
 
 class ThemeManager extends ChangeNotifier {
+  /// Xóa theme đã lưu trong SharedPreferences
+  static Future<void> clearThemeFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_themePrefsKey);
+  }
+
   AppThemeConfig _currentTheme;
 
   ThemeManager(this._currentTheme);

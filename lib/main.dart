@@ -10,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final savedTheme = await ThemeManager.loadThemeFromPrefs();
   final defaultTheme = AppThemeConfig(
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     colorPreset: PresetColors.defaultPreset,
     fontFamily: 'Roboto',
     fontSize: 16,

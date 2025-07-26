@@ -4,6 +4,8 @@ import 'package:widget_app/src/core/theme/theme.dart';
 import 'app_color_preset.dart';
 import 'app_theme_config.dart';
 
+enum ThemeColorPreset { defaultPreset, cyan, purple, blue, red, orange }
+
 class ThemeColorSelector extends StatefulWidget {
   const ThemeColorSelector({super.key});
 
@@ -22,6 +24,7 @@ class _ThemeColorSelectorState extends State<ThemeColorSelector> {
     final selectedPreset = _mapColorToPreset(currentTheme.colorPreset);
     final selectedFont = currentTheme.fontFamily;
     final selectedFontSize = currentTheme.fontSize;
+
     return Column(
       children: [
         CupertinoSegmentedControl<ThemeColorPreset>(
@@ -44,9 +47,7 @@ class _ThemeColorSelectorState extends State<ThemeColorSelector> {
           onValueChanged: (value) {
             _updateTheme(context, font: value);
           },
-          children: {
-            for (var font in fonts) font: Text(font),
-          },
+          children: {for (var font in fonts) font: Text(font)},
         ),
         const SizedBox(height: 16),
         CupertinoSegmentedControl<double>(
@@ -54,15 +55,14 @@ class _ThemeColorSelectorState extends State<ThemeColorSelector> {
           onValueChanged: (value) {
             _updateTheme(context, fontSize: value);
           },
-          children: {
-            for (var size in fontSizes) size: Text(size.toString()),
-          },
+          children: {for (var size in fontSizes) size: Text(size.toString())},
         ),
       ],
     );
   }
 
-  void _updateTheme(BuildContext context, {
+  void _updateTheme(
+    BuildContext context, {
     ThemeColorPreset? preset,
     String? font,
     double? fontSize,
@@ -72,7 +72,9 @@ class _ThemeColorSelectorState extends State<ThemeColorSelector> {
     themeManager.updateTheme(
       AppThemeConfig(
         brightness: current.brightness,
-        colorPreset: _mapPresetToColor(preset ?? _mapColorToPreset(current.colorPreset)),
+        colorPreset: _mapPresetToColor(
+          preset ?? _mapColorToPreset(current.colorPreset),
+        ),
         fontFamily: font ?? current.fontFamily,
         fontSize: fontSize ?? current.fontSize,
       ),
